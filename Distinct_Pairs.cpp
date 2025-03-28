@@ -13,6 +13,7 @@ int main() {
 	}
 	for(int &i:b)cin >> i;
    int cnt = 0;
+   
 	for(int i =0;i<n and cnt!=n+m-1;i++){
 	    for(int j = 0;j<m;j++){
 	        if(temp.insert(a[i]+b[j]).second){

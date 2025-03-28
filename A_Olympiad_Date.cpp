@@ -12,30 +12,31 @@ using namespace std;
 #define int long long
 /*------------X------------*/
 
+
 void crack()
 {
-    int n, x;
-    cin >> n >> x;
-    int temp = n;
-    int arr[n];
-    for(int &i:arr)cin >> i;
-    set<int>possible_k;
-    for(int i =1;i*i<=n;i++){
-        if(n%i==0){
-            possible_k.insert(i);
-            if(n/i!=i and n/i!=n)possible_k.insert(n/i);
-            temp/=i;
-        }
-    }
-    for(auto it:possible_k){
-        int sz = it;
-        int window_length = n/sz;
-        while(sz){
-            
-        }
+     int n;
+     cin >>n;
+     vector<int> ab = {0,0,0,1,2,2,3,5};
+    
+     int arr[n+1];
+     for(int i=1;i<=n;i++)cin>>arr[i];
+     int cnt = 0;
+    //  sort(arr,arr+n+1);
+     int i;
+     for( i =1;i<=n;i++){
+         if(find(ab.begin(),ab.end(),arr[i])!=ab.end()){
+             ab.erase(find(ab.begin(),ab.end(),arr[i]));
+             
+            }
+            if(!ab.size())break;
+     }
+    //  cout<<ab.size()<<endl;
+     if(ab.size()>0)cout<<0<<endl;
+     else
+     cout<<i<<endl;
 
-    }
-    for(auto i:possible_k)cerr<<i<<endl;
+
 
 }
 

@@ -10,33 +10,17 @@ using namespace std;
 #define faf ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
 #define endl '\n'
 #define int long long
+#define FOR(i,arr) for(int i:arr)cout<<i<<" "
 /*------------X------------*/
+
 
 void crack()
 {
-    int n, x;
-    cin >> n >> x;
-    int temp = n;
-    int arr[n];
-    for(int &i:arr)cin >> i;
-    set<int>possible_k;
-    for(int i =1;i*i<=n;i++){
-        if(n%i==0){
-            possible_k.insert(i);
-            if(n/i!=i and n/i!=n)possible_k.insert(n/i);
-            temp/=i;
-        }
-    }
-    for(auto it:possible_k){
-        int sz = it;
-        int window_length = n/sz;
-        while(sz){
-            
-        }
-
-    }
-    for(auto i:possible_k)cerr<<i<<endl;
-
+     int n,q;
+     cin >> n >> q;
+     int arr[n+1]{};
+     for(int i = 0;i<=n;i++)arr[i]= i;
+     
 }
 
 int32_t main()

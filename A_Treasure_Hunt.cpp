@@ -12,31 +12,36 @@ using namespace std;
 #define int long long
 /*------------X------------*/
 
+bool ans(int a, int mid,int x, int y){
+    if(mid&1){
+        return (y*(mid/2))+(x*(mid-(mid/2)))>=a;
+    }
+    else{
+        return (y*(mid/2)) + (x*(mid/2))>=a;
+    }
+}
+
 void crack()
 {
-    int n, x;
-    cin >> n >> x;
-    int temp = n;
-    int arr[n];
-    for(int &i:arr)cin >> i;
-    set<int>possible_k;
-    for(int i =1;i*i<=n;i++){
-        if(n%i==0){
-            possible_k.insert(i);
-            if(n/i!=i and n/i!=n)possible_k.insert(n/i);
-            temp/=i;
-        }
+    int x,y,a;
+    cin >> x >> y >> a;
+    a++;
+   
+    int anss = -1;
+    int l = 1,r = 1e9;
+    while(l<=r){
+        int mid = (l+r)/2;
+        if(ans(a,mid,x,y)){
+            anss = mid;
+           
+            r = mid-1;
+        } 
+        else l = mid+1;
     }
-    for(auto it:possible_k){
-        int sz = it;
-        int window_length = n/sz;
-        while(sz){
-            
-        }
-
-    }
-    for(auto i:possible_k)cerr<<i<<endl;
-
+    
+    if(anss&1)cout<<"NO"<<endl;
+    else cout<<"YES"<<endl;
+     
 }
 
 int32_t main()

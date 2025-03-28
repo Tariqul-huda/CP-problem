@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "iostream": "cpp",
+<<<<<<< Updated upstream
         "bitset": "cpp"
+=======
+        "bitset": "cpp",
+        "tuple": "cpp"
+>>>>>>> Stashed changes
     }
 }
