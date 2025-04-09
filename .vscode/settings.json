@@ -3,7 +3,12 @@
         "iostream": "cpp",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "bitset": "cpp"
+=======
+        "bitset": "cpp",
+        "tuple": "cpp"
+>>>>>>> Stashed changes
 =======
         "bitset": "cpp",
         "tuple": "cpp"
