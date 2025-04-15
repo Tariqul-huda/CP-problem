@@ -1,1 +1,1 @@
-print('print("puzzing")')
+print("puzzling")

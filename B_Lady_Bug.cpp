@@ -39,9 +39,9 @@ void crack()
     int group2_b = (n + 1) / 2;
     
     if (sum1 <= group1_b && sum2 <= group2_b) {
-        cout << "YES\n";
+        cout << "YES"<<endl;
     } else {
-        cout << "NO\n";
+        cout << "NO"<<endl;
     }
 }
 

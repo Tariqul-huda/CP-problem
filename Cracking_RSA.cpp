@@ -46,8 +46,7 @@ void crack()
     int n,e;
     cin >> n >> e;
      int r = phi(n);
-    //  cerr<<!prime[11]<<endl;
-    //  cerr<<r<<endl;
+
      for(int i =2;i<r;i++){
         if((i*e)%r==1){
             cout<<i<<endl;
