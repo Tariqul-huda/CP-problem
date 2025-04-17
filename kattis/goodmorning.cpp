@@ -15,48 +15,34 @@ using namespace std;
 vector<string>result;
 unordered_map<string,bool>mp;
 set<int>r;
-void solve(vector<string>&arr,int x, int y, string current){
-    if(x==LIMIT or y==LIMIT or current.size()>3){
-
+void solve(vector<string>& arr, int x, int y, string current) {
+    // First check boundaries
+    if (x >= LIMIT || y >= LIMIT || current.size() > 3)
         return;
+    
+    // Check if current cell is valid
+    if (arr[x][y] == '-')
+        return;
+    
+    // Add current character to string
+    string newStr = current + arr[x][y];
+    
+    // Add to result if non-empty
+    if (!newStr.empty())
+        result.push_back(newStr);
+    
+    // Stay in the same position and take the character again
+    if (newStr.size() < 3) {
+        solve(arr, x, y, newStr);  // Same position, adding the same character
     }
-    string tt = (arr[x][y]!='-')?current+arr[x][y]:current;
-    result.push_back(current);
     
-    cout<<tt<<endl;
-    solve(arr,x,y,tt);
-    // current.pop_back();
-    tt.pop_back();
-    solve(arr,x+1,y,tt);
-    tt.pop_back();
-    solve(arr,x,y+1,tt);
-    
-
-
-
-    
-    // solve(arr,x+1,y,tt);
-    // result.push_back(current);
-    // solve(arr,x,y+1,tt);
-    // result.push_back(current);
-
-
-
-//     if(current.size()>3)return;
-    
-//     solve(arr,x,y,(arr[x][y]!='-')?current+arr[x][y]:current);
-//     result.push_back(current);
-//     solve(arr,x+1,y,(arr[x][y]!='-')?current+arr[x][y]:current);
-//     result.pop_back();
-    
-//     solve(arr,x+1,y,current);
-//    if(current[0]!=' ' or current[current.size()-1]!=' ')
-//     result.push_back(current);
-//     solve(arr,x,y+1,(arr[x][y]!='-')?current+arr[x][y]:current);
-//     if(current[0]!=' ' or current[current.size()-1]!=' ')
-//     result.push_back(current);
-
+    // Recursive calls to move
+    solve(arr, x+1, y, newStr);  // Down
+    solve(arr,x+1,y,current);
+    solve(arr, x, y+1, newStr);
+    solve(arr,x,y+1,current);
 }
+
 void crack()
 {
     int n;
@@ -64,12 +50,12 @@ void crack()
    auto i = r.lower_bound(n);
    if(*i==n)cout<<n<<endl;
    else{
-    if(abs(*next(i)-n)<abs(*prev(i)-n)){
-        cout<<*next(i)<<endl;
+    if(abs(*i-n)<abs(*prev(i)-n)){
+        cout<<*i<<endl;
 
     }
     else cout<<*prev(i)<<endl;
-    cerr<<*next(i)<<endl;
+    // cerr<<*next(i)<<endl;
    }
     
 
@@ -86,14 +72,17 @@ int32_t main()
     };
 
     for(int i=0;i<LIMIT;i++)for(int j=0;j<LIMIT;j++)if(dict[i][j]!='-')solve(dict,i,j,"");
+
     sort(result.begin(),result.end());
     result.erase(result.begin(),find(result.begin(),result.end(),"0"));
-    cout<<result.size()<<endl;
+    // cout<<result.size()<<endl;
+    // for(string s:result)cerr<<s<<endl;
 
     for(auto &i:result){
         int help = stoll(i);
       r.insert(help);
     }
+    // for(auto i:r)cerr<<i<<endl;
     
     test
     {
